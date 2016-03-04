@@ -53,6 +53,23 @@
     }
   }
 
+  /* Public */
+  Sticky.prototype.disable = function() {
+    if (this.$element.parent()[0] === this.wrapper) {
+      this.$element.removeClass(this.options.stuckClass)
+      this.$wrapper.removeAttr('style');
+    }
+  }
+
+  /* Public */
+  Sticky.prototype.enable = function() {
+    if (this.$element.parent()[0] === this.wrapper) {
+      var wrapperHeight = this.$element.outerHeight(true)
+      this.$wrapper.height(wrapperHeight)
+      this.$element.addClass(this.options.stuckClass)
+    }
+  }
+
   Sticky.defaults = {
     wrapper: '<div class="sticky-wrapper" />',
     stuckClass: 'stuck',
